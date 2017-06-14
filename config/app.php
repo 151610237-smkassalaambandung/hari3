@@ -180,6 +180,9 @@ return [
         //add on
         Collective\Html\HtmlServiceProvider::class,
 
+        //add on
+        Laratrust\LaratrustServiceProvider::class,
+
     ],
 
     /*
@@ -229,6 +232,8 @@ return [
         //add on
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        //add on
+        'Laratrust' => Laratrust\LaratrustFacade::class,
 
     ],
 
