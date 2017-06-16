@@ -18,10 +18,16 @@ class AuthorsController extends Controller
         
         if($request->Ajax() ){
             $authors = Author::select(['id','name']);
-            return Datatables::of($authors)->make(true);
+            return Datatables::of($authors)
+            ->addColumn('action',function($author){
+            	return view('datatable._action', ['edit_url'=>route('authors.edit', $author->id),
+            		]);
+            })->make(true);
         }
         $html=$htmlBuilder
         ->addColumn(['data'=>'name','name'=>'name','title'=>'Nama']);
+        ->addColumn(['data'=>'action','name'=>'action','title'=>'', 'orderable'=>false, '\searchabel'=>false]);
+
         return view('authors.index')->with(compact('html'));
     }
 
@@ -33,6 +39,7 @@ class AuthorsController extends Controller
     public function create()
     {
         //
+        return view('authors.create');
     }
 
     /**
@@ -44,6 +51,13 @@ class AuthorsController extends Controller
     public function store(Request $request)
     {
         //
+        $this->validate($request, ['name'=>'required|unique:authors']);
+        $author = Author::create($request->only('name'));
+        session::flash("flash_notification", [
+        	"level"=>"success",
+        	"message"=>"Berhasil Menyipan $author->name"
+        	]);
+        return redirect()->route('authors.index');
     }
 
     /**

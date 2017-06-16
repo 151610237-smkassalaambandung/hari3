@@ -24,7 +24,7 @@
         ]); ?>
     </script>
 </head>
-<body>
+<body style="background:url({{asset("389871.jpg")}}); background-repeat:no-request; background-size:cover; background-attachmen?field;">
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -99,6 +99,8 @@
     @yield('scripts')
     @include('layouts.menu')
     @include('layouts.profile')
+    @include('layouts._flash')
+    
 
 </body>
 </html>
