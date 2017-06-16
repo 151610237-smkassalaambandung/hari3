@@ -1,1 +1,1 @@
-<a href="{{$edit_url">Ubah</a>
+<a href="{{$edit_url}}">Ubah</a>

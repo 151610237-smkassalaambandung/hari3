@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Author;
+use Session;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Html\Builder;
 use Yajra\Datatables\Datatables;
@@ -20,12 +21,12 @@ class AuthorsController extends Controller
             $authors = Author::select(['id','name']);
             return Datatables::of($authors)
             ->addColumn('action',function($author){
-            	return view('datatable._action', ['edit_url'=>route('authors.edit', $author->id),
+            return view('datatable._action', ['edit_url'=> route('authors.edit', $author -> id),
             		]);
             })->make(true);
         }
         $html=$htmlBuilder
-        ->addColumn(['data'=>'name','name'=>'name','title'=>'Nama']);
+        ->addColumn(['data'=>'name', 'name='=>'name', 'title'=>'Nama'])
         ->addColumn(['data'=>'action','name'=>'action','title'=>'', 'orderable'=>false, '\searchabel'=>false]);
 
         return view('authors.index')->with(compact('html'));
