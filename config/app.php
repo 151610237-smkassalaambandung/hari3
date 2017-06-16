@@ -183,6 +183,9 @@ return [
         //add on
         Laratrust\LaratrustServiceProvider::class,
 
+        //add on
+        Yajra\Datatables\DatatablesServiceProvider::class,
+
     ],
 
     /*

@@ -54,8 +54,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
         //add on
-        'role' => \Laratrust\Middlawere\LaratrustRole::class,
-        'permission' => \Laratrust\Middlawere\LaratrustPermission::class,
-        'ability' => \Laratrust\Middlawere\LaratrustAbility::class,
+        'role' => \Laratrust\Middleware\LaratrustRole::class,
+        'permission' => \Laratrust\Middleware\LaratrustPermission::class,
+        'ability' => \Laratrust\Middleware\LaratrustAbility::class,
     ];
 }

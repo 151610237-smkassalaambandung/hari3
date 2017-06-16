@@ -12,6 +12,8 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/jquery.dataTables.css" rel="stylesheet">
+    <link href="/css/dataTables.bootstrap.css" rel="stylesheet">
     <link href="{{asset('/css/font-awesome.min.css')}}" rel="stylesheet">
     <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
 
@@ -45,7 +47,13 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                        &nbsp;
+                        @if(Auth::check())
+                            <li><a href="{{ url('/home') }}">Dashboard</a></li>
+                        @endif
+
+                        @role('admin')
+                            <li><a href="{{ route('authors.index') }}">Penulis</a></li>
+                        @endrole
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -85,7 +93,10 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    <script src="/js/jquery.dataTables.min.js"></script>
+    <script src="/js/dataTables.bootstrap.min.js"></script>
     <!-- <script src="{{asset('/js/bootstrap.min.js')}}"></script> -->
+    @yield('scripts')
     @include('layouts.menu')
     @include('layouts.profile')
 
